@@ -1,4 +1,5 @@
 #include "public.h"
+#include <signal.h>
 #include "modules/parseconf.h"
 #include "modules/setapply.h"
 #include "modules/powerstate.h"
@@ -29,7 +30,7 @@ void term_handler(int signum)
 	exit(0);
 }
 
-void timer_handler()
+void timer_handler(union sigval arg)
 {
 	pretty("config reload start");
 	parseconf(&config);
